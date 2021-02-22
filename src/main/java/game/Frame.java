@@ -3,10 +3,16 @@ package game;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.*;
 import javax.swing.*;
 
 
 public class Frame extends JFrame{
+    
+    
+    ////Статики
+    
+    static Label_ViewM main_lbl;
     
     Dimension screenSize  = Toolkit.getDefaultToolkit().getScreenSize();
     int w = screenSize.width;
@@ -15,9 +21,6 @@ public class Frame extends JFrame{
     int h_window = 480;
     
     ///Создание полей GUI 
-    
-    JLabel new_text; ///Метка с текстом
-    JButton get_monsters; ///Кнопка показывающая следующего монстра
     
     Frame(){
         
@@ -30,22 +33,24 @@ public class Frame extends JFrame{
                 
         ////Создание GUI
         
-        new_text = new JLabel("Где все монстры?");
-        new_text.setBounds((int)(w_window/2),(int)(h_window/2),280,50);
+       Panel_ViewM main_panel = new Panel_ViewM();
+       
+       main_lbl = new Label_ViewM(90,90,200,200,"Где все монстры?"); ///Статическое поле
         
-        get_monsters = new JButton("Нажми чтобы увидеть орка");
-        get_monsters.setBounds((int)(w_window/1.2),(int)(h_window/1.2),200,30);
-        
-        add(new_text); ///Добавление метки в окно
-        
-        GetMonsters_Button taptap = new GetMonsters_Button(); /// Создание объекта обработчика событий
-        get_monsters.addActionListener(taptap);
-        
-        add(get_monsters);
-        
+       Button_ViewM button_m = new Button_ViewM(250,240,200,30,"Нажать");
+
+       add(main_panel);
+       
+       main_panel.add(button_m);
+       
+       main_panel.add(main_lbl);
+       
+       button_m.addActionListener(e->{main_lbl.setText("Cмотри!");});
         
         
         setVisible(true); ///Делаем Все видимым
     } ///Конец конструктора
+
+
     
 } /// Конец класса
