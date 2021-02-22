@@ -7,6 +7,7 @@ package game;
 public class Main {
     
     static Enemys orcs[] = null;
+    static Enemys all_monsters[] = null; // Массив для всех монстров
     
     public static void main(String[] m) {
         

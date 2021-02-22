@@ -25,4 +25,11 @@ public class Enemys {
 
     }
     
+    @Override
+    public String toString(){
+        String txt;
+        txt = this.name + " HP: " + this.hp;
+        return txt;
+    }
+    
 }
